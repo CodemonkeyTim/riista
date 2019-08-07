@@ -46,13 +46,13 @@
 		return {
 			getImages: function (slotId) {
 				return makeRequest({
-					url: APIURL + "/api/images/",
+					url: APIURL + "/api/images",
 					method: "GET"
 				});
 			},
 			updateEmails: function () {
 				return makeRequest({
-					url: APIURL + "/api/updateEmails/",
+					url: APIURL + "/api/updateEmails",
 					method: "POST"
 				});	
 			}
