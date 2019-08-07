@@ -15,6 +15,7 @@
       Teemu Vainio
   </author>
 
-  <access origin="*" />
+  <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
+  <access origin="http://*" />
 
 </widget>
