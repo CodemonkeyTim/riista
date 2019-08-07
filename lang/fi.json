@@ -1,0 +1,20 @@
+{
+	"general" : {
+		"dateFormat"				: "D.M.YYYY",
+		"back"						: "Takaisin",
+		"errorMessages"	: {
+			"invalidDate"			: "Annetussa päivämäärässä on jotain mätää"
+		},
+		"validationErrors" : {
+			
+		}
+	},
+	"landingPage" : {
+		"pageHeader"				: "RiistaSovellus",
+		"updateEmails"				: "Päivitä kuvat sähköpostista",
+		"tableHeadings" : {
+			"description"			: "Kuvaus",
+			"timestamp"				: "Tallennettu"
+		}
+	}
+}
