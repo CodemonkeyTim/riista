@@ -2,7 +2,7 @@
 	riistaControllers.controller('landingCtrl', ['$scope', '$timeout', '$location', '$filter', '$translate', 'BackEndService',
 		function ($scope, $timeout, $location, $filter, $translate, BackEndService) {
 			$scope.images = [];
-			
+
 			BackEndService.getImages().then(function (images) {
 				$.each(images, function (index, image) {
 					image.url = APIURL + "/uploads/" + image.filename;
@@ -15,7 +15,13 @@
 
 			$scope.updateEmails = function () {
 				BackEndService.updateEmails().then(function () {
-					alert("Ok!");
+					alert("Update ok");
+
+					BackEndService.getImages().then(function (images) {
+						$scope.images = images;
+					}, function () {
+
+					});
 				}, function () {
 					alert("Erroree!");
 				});
