@@ -5,8 +5,6 @@
     versionCode = "10"
     version     = "1.0.0" >
 
-<!-- versionCode is optional and Android only -->
-
   <name>RiistaApp</name>
 
   <description>
@@ -16,5 +14,7 @@
   <author href="https://kaikenlaista.fi" email="vaintee1@gmail.com  ">
       Teemu Vainio
   </author>
+
+  <access origin="*" />
 
 </widget>
