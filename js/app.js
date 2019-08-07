@@ -1,8 +1,8 @@
 ﻿var riistaApp;
 var riistaControllers;
 
-var APIURL = "http://lätkävuoro.fi/riista/public/";
-APIURL = "http://localhost:8000/";
+var APIURL = "http://xn--ltkvuoro-0zac.fi/riista/public/";
+//APIURL = "http://localhost:8000/";
 
 
 function initAngular() {
