@@ -22,34 +22,34 @@
 
 <div class="row">
 	<div class="col-sm">
-		<div class="image-row-container" ng-repeat="image in images">
-			<div class="image-container">
-				<div class="image-holder" style="background-image: url('{{ image.url }}')">
-				
-				</div>
-			</div>
-
-			<div class="image-information-container">
-				<table class="table table-striped">
-					<tr>
-						<th>
-							{{ 'landingPage.tableHeadings.description' | translate }}
-						</th>
-						<td>
-							{{ image.description }}	
-						</td>
-					</tr>
-					<tr>
-						<th>
-							{{ 'landingPage.tableHeadings.timestamp' | translate }}
-						</th>
-						<td>
-							{{ image.saved_timestamp * 1000 | formatDate }}	
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Aika</th>
+					<th>Kuvaus</th>
+					<th>Kuva</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="image in images">
+					<td>
+						{{ image.delivery_timestamp * 1000 | formatDateTime }}
+					</td>
+					<td>
+						{{ image.description }}
+					</td>
+					<td>
+						<div class="image-container">
+							<a href="{{ image.url }}">
+								<div class="image-holder" style="background-image: url('{{ image.url }}')">
+							
+								</div>
+							</a>
+						</div>
+					</td>		
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>
 
@@ -58,13 +58,14 @@
 		margin-bottom: 10px;
 	}
 
-	.image-row-container .image-container {
+	.image-container {
 		width: 100%;
 
-		height: 400px;
+		height: 200px;
+		width: 200px;
 	}
 
-	.image-row-container .image-container .image-holder {
+	.image-container .image-holder {
 		width: 100%;
 		height: 100%;
 
