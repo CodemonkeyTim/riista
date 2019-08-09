@@ -105,7 +105,7 @@
 			}
 
 			$scope.addEmailBox = function() {
-				if ($scope.emailBoxes[$scope.emailBoxes.length - 1].new) {
+				if ($scope.emailBoxes.length > 0 && $scope.emailBoxes[$scope.emailBoxes.length - 1].new) {
 					return;
 				}
 
