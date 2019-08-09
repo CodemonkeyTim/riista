@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>RiistaSovellus</title>
-		<link rel="stylesheet" href="css/palletManager.css" />
+		<title>Riistakamerakuvat</title>
+		<link rel="stylesheet" href="css/riistaApp.css" />
 		
 		<script src="js/lib/jquery-2.1.4.min.js"></script>
 		<script src="js/lib/angular-1.4.3.min.js"></script>
@@ -16,7 +16,7 @@
 	  		rel="stylesheet">
 
 	  	<!-- Compiled and minified JavaScript -->
-	  	<script src="js/lib/bootstrap-4.0.0.beta3.min.js"></script>
+	  	<script src="js/lib/bootstrap-4.3.1.min.js"></script>
 
 	  	<!-- Utility JavaScript -->
 	  	<script src="js/lib/moment-2.10.3.js"></script>
@@ -28,11 +28,12 @@
 		<script src="js/services.js"></script>
 		<script src="js/directives.js"></script>
 		<script src="js/filters.js"></script>
+		<script src="js/interceptors.js"></script>
 		
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
 	</head>
 	<body ng-app="riistaApp">
-		<div class="container" ng-view>
+		<div class="container-fluid" ng-view>
 			
 		</div>
 	</body>
@@ -40,6 +41,7 @@
 	<script>
 		initAngular();
 		initControllers();
+		initInterceptors();
 		configAngular();
 		initServices();
 		initDirectives();

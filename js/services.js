@@ -25,10 +25,15 @@
 			localStorage.removeItem(key);
 		}
 
+		function clear() {
+			localStorage.clear();
+		}
+
 		return {
 			store: store,
 			get: get,
-			remove: remove
+			remove: remove,
+			clear: clear
 		}
 	});
 
@@ -44,17 +49,53 @@
 		}
 
 		return {
-			getImages: function (slotId) {
+			getImages: function (page) {
+				if (typeof(page) == "undefined" || page == null) {
+					page = 1;
+				}
+
 				return makeRequest({
 					url: APIURL + "/api/images",
-					method: "GET"
+					method: "GET",
+					params: {
+						page: page
+					}
 				});
 			},
-			updateEmails: function () {
+			updateEmails: function (id) {
 				return makeRequest({
 					url: APIURL + "/api/updateEmails",
-					method: "POST"
+					method: "POST",
+					params: {
+						id: id
+					}
 				});	
+			},
+			getEmailBoxes: function () {
+				return makeRequest({
+					url: APIURL + "/api/emailBoxes",
+					method: "GET"
+				});	
+			},
+			createNewBox: function (box) {
+				return makeRequest({
+					url: APIURL + "/api/emailBoxes",
+					method: "POST",
+					params: box
+				});	
+			},
+			login: function (user) {
+				return makeRequest({
+					url: APIURL + "/api/login",
+					method: "POST",
+					params: user
+				});
+			},
+			logout: function (user) {
+				return makeRequest({
+					url: APIURL + "/api/logout",
+					method: "POST"
+				});
 			}
 		}
 	});

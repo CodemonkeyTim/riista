@@ -1,8 +1,13 @@
 /* Fonts definition */
 
 @font-face {
-    font-family: adventure;
-    src: url(../fonts/Adventure.ttf);
+    font-family: hemi;
+    src: url(../fonts/Hemi.ttf);
+}
+
+@font-face {
+    font-family: crom;
+    src: url(../fonts/Crom.ttf);
 }
 
 /* General */

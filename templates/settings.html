@@ -1,0 +1,132 @@
+<div class="row">
+	<div class="col-sm">
+		<h2 class="text-center">
+			{{ 'settingsPage.pageHeading' | translate }}
+		</h2>
+	</div>
+</div>
+
+<br />
+<br />
+
+<div class="row" ng-if="feedbackMessageVisible">
+	<div class="col-sm">
+		<div class="alert alert-{{ feedback.status }}">
+			{{ feedback.message }}
+		</div>
+	</div>
+	<br/>
+</div>
+
+<div class="row">
+	<div class="col-sm">
+		<button class="btn btn-success btn-block" ng-click="addEmailBox()">
+			<i class="fas fa-plus-circle"></i> Lisää loota
+		</button>
+
+		<button class="btn btn-danger btn-block" ng-click="removeEmailBox()">
+			<i class="fas fa-minus-circle"></i> Poista loota
+		</button>
+
+		<br />
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Palvelin</th>
+					<th>Käyttäjätunnus</th>
+					<th>Toiminto</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="box in emailBoxes">
+					<td ng-if="!box.new">
+						{{ box.host }}
+					</td>
+					<td ng-if="!box.new">
+						{{ box.login_user }}
+					</td>
+					<td ng-if="!box.new">
+						<button class="btn btn-primary btn-block" ng-click="updateEmails(box)">
+							<i class="fas fa-download"></i>
+						</button>
+					</td>
+
+					<td ng-if="box.new">
+						<input type="text" class="form-control" ng-model="box.host" placeholder="Palvelin" />
+					</td>
+					<td ng-if="box.new">
+						<input type="text" class="form-control" ng-model="box.login_user" placeholder="Käyttäjätunnus" />
+						<br />
+						<input type="text" class="form-control" ng-model="box.password" placeholder="Salasana" />
+					</td>
+					<td ng-if="box.new">
+						<button class="btn btn-success btn-block" ng-click="saveNew(box)">
+							<i class="fas fa-plus"></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm">
+		<button class="btn btn-primary btn-block btn-tall" ng-click="back()">
+			<i class="fas fa-arrow-left"></i> {{ 'settingsPage.back' | translate }}
+		</button>
+
+		<button class="btn btn-primary btn-block btn-tall" ng-click="logout()">
+			<i class="fas fa-sign-out-alt"></i> {{ 'settingsPage.logout' | translate }}
+		</button>
+	</div>
+</div>
+
+<br/>
+<br/>
+
+<div class="grey-overlay" ng-if="loaderVisible">
+	
+</div>
+
+<div class="spinner-container" ng-if="loaderVisible">
+	<div class="spinner-border text-success" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>
+
+<style>
+	.grey-overlay {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+
+		width: 100%;
+		height: 100%;
+
+		z-index: 10;
+
+		opacity: 0.7;
+		background-color: #555;
+	}
+
+	.spinner-container {
+		position: fixed;
+
+		top: calc(50% - 100px);
+		left: calc(50% - 100px);
+
+		width: 200px;
+		height: 200px;
+
+		z-index: 100;
+
+		font-size: 30px;
+	}
+
+	.spinner-container .spinner-border {
+		width: 6em;
+		height: 6em;
+	}
+</style>

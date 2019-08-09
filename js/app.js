@@ -2,7 +2,7 @@
 var riistaControllers;
 
 var APIURL = "http://xn--ltkvuoro-0zac.fi/riista/public";
-//APIURL = "http://localhost:8000/";
+APIURL = "http://localhost:8000";
 
 
 function initAngular() {
@@ -19,7 +19,9 @@ function configAngular() {
     riistaApp.config(['$routeProvider', '$compileProvider', '$httpProvider', '$translateProvider',
         function($routeProvider, $compileProvider, $httpProvider, $translateProvider) {
             var simpleRoutes = [
-                "landing"
+                "login",
+                "imageList",
+                "settings"
             ]
             
             $.each(simpleRoutes, function(index, route) {
@@ -30,7 +32,7 @@ function configAngular() {
             });
 
             $routeProvider.otherwise({
-                redirectTo: '/landing'
+                redirectTo: '/login'
             });
 
             $translateProvider.useStaticFilesLoader({
@@ -49,6 +51,8 @@ function configAngular() {
             $translateProvider.useSanitizeValueStrategy('escape');
 
             //$httpProvider.defaults.withCredentials = true;
+
+            $httpProvider.interceptors.push('authInterceptor');
         }
     ]);
 }

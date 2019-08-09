@@ -1,0 +1,69 @@
+<div class="row">
+	<div class="col-sm">
+		<h2 class="text-center" id="riista-heading">
+			{{ 'loginPage.riistaHeading' | translate }}
+		</h2>
+	</div>
+</div>
+
+<br />
+<br />
+
+<div class="row">
+	<div class="col-sm">
+		<h2 id="welcome" class="text-center">
+			{{ 'loginPage.pageHeading' | translate }}
+		</h2>
+	</div>
+</div>
+
+<br />
+<br />
+
+<div class="row">
+	<div class="col-sm">
+		<input 
+			class="form-control btn-block" 
+			type="text" 
+			ng-model="user.email" 
+			placeholder="{{ 'loginPage.email' | translate }}" />
+	</div>
+</div>
+
+<br />
+
+<div class="row">
+	<div class="col-sm">
+		<input 
+			class="form-control btn-block" 
+			type="password" 
+			ng-model="user.password"
+			placeholder="{{ 'loginPage.password' | translate }}" />
+	</div>
+</div>
+
+<br />
+
+<div class="row">
+	<div class="col-sm">
+		<button class="btn btn-primary btn-block" ng-click="login()">
+			{{ 'loginPage.login' | translate }}
+		</button>
+	</div>
+</div>
+
+<br />
+
+<div class="row" ng-if="loginErrorVisible">
+	<div class="col-sm">
+		<div class="alert alert-danger">
+			{{ 'loginPage.loginErrorMessage' | translate }}
+		</div>
+	</div>
+</div>
+
+<style>
+	#riista-heading {
+		font-family: 'crom';
+	}
+</style>

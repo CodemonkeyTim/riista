@@ -9,12 +9,26 @@
 			
 		}
 	},
-	"landingPage" : {
-		"pageHeader"				: "RiistaSovellus",
+	"imageListPage" : {
+		"pageHeading"				: "Kuvalista",
 		"updateEmails"				: "Päivitä kuvat sähköpostista",
+		"toSettings"				: "Asetukset",
 		"tableHeadings" : {
 			"description"			: "Kuvaus",
 			"timestamp"				: "Tallennettu"
 		}
+	},
+	"loginPage" : {
+		"riistaHeading"				: "Riistakameran kuvat",
+		"pageHeading"				: "Kirjaudu sisään",
+		"email"						: "Sähköposti",
+		"password"					: "Salasana",
+		"login"						: "Kirjaudu",
+		"loginErrorMessage"			: "Kirjautuminen epäonnistui"
+	},
+	"settingsPage" : {
+		"pageHeading"				: "Asetukset",
+		"back"						: "Takaisin",
+		"logout"					: "Kirjaudu ulos"
 	}
 }
