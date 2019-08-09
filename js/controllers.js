@@ -130,8 +130,8 @@
 			}
 
 			$scope.logout = function () {
-				BackEndService.logout();
 				DataStoreService.clear();
+				BackEndService.logout();
 
 				$location.path("/login");
 			}
