@@ -39,8 +39,8 @@
 		}
 	]);
 
-	riistaControllers.controller('imageListCtrl', ['$scope', '$timeout', '$location', '$filter', '$translate', 'BackEndService',
-		function ($scope, $timeout, $location, $filter, $translate, BackEndService) {
+	riistaControllers.controller('imageListCtrl', ['$scope', '$timeout', '$interval', '$location', '$filter', '$translate', 'BackEndService',
+		function ($scope, $timeout, $interval, $location, $filter, $translate, BackEndService) {
 			$scope.images;
 			$scope.paging = {
 				currentPageIndex: 1,
@@ -90,7 +90,7 @@
 
 			$scope.$on("appResuming", function () {
 				BackEndService.getEmailBoxes().then(function (emailBoxes) {
-					setInterval(function () {
+					var intervalId = $interval(function () {
 						var allUpdated = true;
 
 						$.each(emailBoxes, function (index, box) {
@@ -98,6 +98,7 @@
 						});
 
 						if (allUpdated) {
+							$interval.cancel(intervalId);
 							updatedImages();
 						}
 					}, 300);
