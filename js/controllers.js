@@ -89,7 +89,29 @@
 			updateImages();
 
 			$scope.$on("appResuming", function () {
-				updateImages();
+				BackEndService.getEmailBoxes().then(function (emailBoxes) {
+					setInterval(function () {
+						var allUpdated = true;
+
+						$.each(emailBoxes, function (index, box) {
+							allUpdated = allUpdated && box.updated;
+						});
+
+						if (allUpdated) {
+							updatedImages();
+						}
+					}, 300);
+
+					$.each(emailBoxes, function (index, emailBox) {
+						BackEndService.updateEmails(emailBox.id).then(function () {
+							emailBox.updated = true;
+						}, function () {
+
+						});
+					});
+				}, function() {
+
+				});
 			});
 		}
 	]);
