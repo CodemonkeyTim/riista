@@ -99,7 +99,7 @@
 
 						if (allUpdated) {
 							$interval.cancel(intervalId);
-							updatedImages();
+							updateImages();
 						}
 					}, 300);
 
