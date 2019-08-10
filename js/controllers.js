@@ -89,6 +89,7 @@
 			updateImages();
 
 			$scope.$on("appResuming", function () {
+				alert("Yes intidy!");
 				updateImages();
 			});
 		}

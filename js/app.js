@@ -55,6 +55,8 @@ function configAngular() {
         }
     ]).run(['$rootScope', '$location', 'DataStoreService', function ($rootScope, $location, DataStoreService) {
         document.addEventListener("resume", function() {
+            alert("Original resuming!");
+            
             $rootScope.$emit("appResuming");
         }, false);
 
