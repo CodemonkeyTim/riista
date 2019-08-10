@@ -4,7 +4,6 @@ var riistaControllers;
 var APIURL = "http://xn--ltkvuoro-0zac.fi/riista/public";
 //APIURL = "http://localhost:8000";
 
-
 function initAngular() {
     riistaControllers = angular.module('riistaControllers', []);
 
@@ -54,5 +53,15 @@ function configAngular() {
 
             $httpProvider.interceptors.push('authInterceptor');
         }
-    ]);
+    ]).run(['$rootScope', '$location', 'DataStoreService', function ($rootScope, $location, DataStoreService) {
+        document.addEventListener("resume", function() {
+            $rootScope.$emit("appResuming");
+        }, false);
+
+        var authToken = DataStoreService.get("authToken");
+
+        if (authToken !== false && $location.path() == "/login") {
+            $location.path("/imageList");
+        }
+    }]);
 }

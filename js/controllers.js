@@ -30,6 +30,12 @@
 					$scope.loginErrorVisible = false;
 				}, 5000);
 			}
+
+			var authToken = DataStoreService.get("authToken");
+
+			if (authToken !== false) {
+				$location.path("/imageList");
+			}
 		}
 	]);
 
@@ -81,6 +87,10 @@
 			}
 
 			updateImages();
+
+			$scope.$on("appResuming", function () {
+				updateImages();
+			});
 		}
 	]);
 
@@ -130,8 +140,8 @@
 			}
 
 			$scope.logout = function () {
-				DataStoreService.clear();
 				BackEndService.logout();
+				DataStoreService.clear();
 
 				$location.path("/login");
 			}
