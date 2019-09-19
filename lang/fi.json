@@ -16,7 +16,9 @@
 		"tableHeadings" : {
 			"description"			: "Kuvaus",
 			"timestamp"				: "Tallennettu"
-		}
+		},
+		"allUpdated"				: "Kuvat päivitetty spostista",
+		"updateInProcess"			: "Kuvien päivitys meneillään"
 	},
 	"loginPage" : {
 		"riistaHeading"				: "Riistakameran kuvat",

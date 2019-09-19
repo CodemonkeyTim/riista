@@ -47,6 +47,8 @@
 				totalPagesCount: 1
 			}
 
+			$scope.allUpdated = true;
+
 			function updateImages() {
 				BackEndService.getImages($scope.paging.currentPageIndex).then(function (imageData) {
 					var images = imageData.images;
@@ -90,14 +92,14 @@
 
 			$scope.$on("appResuming", function () {
 				BackEndService.getEmailBoxes().then(function (emailBoxes) {
+					$scope.allUpdated = false;
+					
 					var intervalId = $interval(function () {
-						var allUpdated = true;
-
 						$.each(emailBoxes, function (index, box) {
-							allUpdated = allUpdated && box.updated;
+							$scope.allUpdated = $scope.allUpdated && box.updated;
 						});
 
-						if (allUpdated) {
+						if ($scope.allUpdated) {
 							$interval.cancel(intervalId);
 							updateImages();
 						}
