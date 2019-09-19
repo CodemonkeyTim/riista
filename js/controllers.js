@@ -90,31 +90,36 @@
 
 			updateImages();
 
+			var intervalId = false;
+
 			$scope.$on("appResuming", function () {
-				BackEndService.getEmailBoxes().then(function (emailBoxes) {
-					$scope.allUpdated = false;
-					
-					var intervalId = $interval(function () {
-						$.each(emailBoxes, function (index, box) {
-							$scope.allUpdated = $scope.allUpdated && box.updated;
+				if (!interval) {
+					BackEndService.getEmailBoxes().then(function (emailBoxes) {
+						$scope.allUpdated = false;
+
+						intervalId = $interval(function () {
+							$.each(emailBoxes, function (index, box) {
+								$scope.allUpdated = $scope.allUpdated && box.updated;
+							});
+
+							if ($scope.allUpdated) {
+								$interval.cancel(intervalId);
+								intervalId = false;
+								updateImages();
+							}
+						}, 300);
+
+						$.each(emailBoxes, function (index, emailBox) {
+							BackEndService.updateEmails(emailBox.id).then(function () {
+								emailBox.updated = true;
+							}, function () {
+
+							});
 						});
+					}, function() {
 
-						if ($scope.allUpdated) {
-							$interval.cancel(intervalId);
-							updateImages();
-						}
-					}, 300);
-
-					$.each(emailBoxes, function (index, emailBox) {
-						BackEndService.updateEmails(emailBox.id).then(function () {
-							emailBox.updated = true;
-						}, function () {
-
-						});
 					});
-				}, function() {
-
-				});
+				}
 			});
 		}
 	]);

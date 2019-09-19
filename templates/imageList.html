@@ -71,6 +71,24 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col">
+				<button class="btn btn-primary btn-block" ng-click="prevPage()">
+					<i class="fas fa-arrow-circle-left"></i>
+				</button>
+			</div>
+			<div class="col">
+				<div class="page-indicator">
+					 {{ paging.currentPageIndex }} / {{ paging.totalPagesCount }}
+				</div>
+			</div>
+			<div class="col">
+				<button class="btn btn-primary btn-block" ng-click="nextPage()">
+					<i class="fas fa-arrow-circle-right"></i>
+				</button>
+			</div>
+		</div>
 	</div>
 </div>
 
